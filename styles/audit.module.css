@@ -217,27 +217,31 @@
     color: #666;
   }
   
+ /* CTA (normal + print) */
+.imatchCta {
+    margin-top: 56px;
+    padding: 24px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 12px;
+  }
+  
+  .imatchCtaIntro {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 6px;
+  }
+  
+  .imatchLink {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  
+  /* PRINT */
   @media print {
     .printHeader {
       display: block;
     }
-    .imatchCta {
-        margin-top: 56px;
-        padding: 24px;
-        text-align: center;
-        background: rgba(0,0,0,0.03);
-        border-radius: 12px;
-      }
-      
-      .imatchCtaIntro {
-        font-size: 13px;
-        color: #777;
-        margin-bottom: 6px;
-      }
-      
-      .imatchLink {
-        font-size: 14px;
-        font-weight: 500;
-        color: var(--accent);
-        text-decoration: none;
-      }
+  }

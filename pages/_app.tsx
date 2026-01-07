@@ -1000,201 +1000,156 @@ export default function HomePage() {
           </main>
         )}
 
-        {/* RESULTADOS */}
-        {showResults && scoring && (
-          <main>
-            <div className={auditStyles.printHeader}>
-              <div className={auditStyles.printBrand}>
-                <strong>Amplifying Innovation Audit powered by imatch</strong>
-              </div>
-              <div className={auditStyles.printMeta}>
-                {company ? `Empresa: ${company}` : ""}{company && role ? " · " : ""}{role ? `Função: ${role}` : ""}
-              </div>
-            </div>
-            <section style={{ marginBottom: 24 }}>
-              {/* TEXTO DE ENQUADRAMENTO */}
-              <p
-                className={auditStyles.muted}
-                style={{
-                  fontSize: 13,
-                  lineHeight: 1.6,
-                  maxWidth: 760,
-                  marginBottom: 16
-                }}
-              >
-                {t.resultsIntro}
-              </p>
-              <h2
-                style={{
-                  fontSize: 22,
-                  fontWeight: 700,
-                  marginBottom: 4
-                }}
-              >
-                {t.resultsTitle}: {amplifiedScore} / 10
-              </h2>
-              <p style={{ fontSize: 14, color: "#555" }}>
-                {t.resultsP}
-              </p>
-            </section>
-            {/* Insights summary section */}
-            <section style={{ marginBottom: 18 }}>
-              <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 8 }}>
-                {t.insightsTitle}
-              </h3>
-              <ul style={{ paddingLeft: 18, margin: 0, lineHeight: 1.7, fontSize: 13, color: "#555" }}>
-                <li>
-                  <strong>{t.leverageDimsLabel}:</strong>{" "}
-                  {topDims
-                    .map((d: any) => dimLabel(String(d.dim), lang))
-                    .join(", ")}
-                </li>
-                <li>
-                  <strong>{t.topLevelLabel}:</strong>{" "}
-                  {topLevel?.nivel ?? "—"}
-                </li>
-                <li>
-                  <strong>{t.riskLabel}:</strong>{" "}
-                  {riskDim ? dimLabel(String(riskDim.dim), lang) : "—"}
-                  {" "}·{" "}
-                  {riskLevel?.nivel ?? "—"}
-                </li>
-              </ul>
-            </section>
-            {/* Radar section first */}
-            <section style={{ width: "100%", height: 320, marginBottom: 24 }}>
-              <ResponsiveContainer>
-                <RadarChart data={radarData}>
-                  <PolarGrid />
-                  <PolarAngleAxis dataKey="nivel" />
-                  <PolarRadiusAxis angle={30} domain={[0, 100]} />
-                  <Radar
-                    name={t.resultsTitle}
-                    dataKey="score"
-                    stroke="#111111"
-                    fill="#111111"
-                    fillOpacity={0.4}
-                  />
-                </RadarChart>
-              </ResponsiveContainer>
-            </section>
-            {/* Bar section second */}
-            <section style={{ marginBottom: 24 }}>
-              <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 6 }}>
-                {t.dimBarTitle}
-              </h3>
-              <p className={auditStyles.muted} style={{ fontSize: 13, lineHeight: 1.6, maxWidth: 760, marginBottom: 12 }}>
-                {t.dimBarIntro}
-              </p>
-              <div style={{ width: "100%", height: 260 }}>
-                <ResponsiveContainer>
-                  <BarChart data={dimensionBarData} barCategoryGap={"55%"}>
-                    <CartesianGrid stroke="#e8e8e8" strokeDasharray="3 3" />
-                    <XAxis
-                      dataKey="dim"
-                      tickFormatter={(d) => dimLabel(d, lang)}
-                      tick={{ fontSize: 12, fill: "#666" }}
-                    />
-                    <YAxis domain={[0, 100]} tick={{ fontSize: 12, fill: "#666" }} />
-                    <Tooltip
-                      formatter={(v: any) => [`${Math.round(v)}%`, "Score"]}
-                      labelFormatter={(l: any) => dimLabel(String(l), lang)}
-                    />
-                    <Bar
-                      dataKey="score"
-                      barSize={22}
-                      fill="#111"
-                      fillOpacity={0.28}
-                      radius={[8, 8, 0, 0]}
-                    />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-              <button
-                onClick={() => window.print()}
-                className={`${auditStyles.btnSecondary}`}
-              >
-                Guardar PDF
-              </button>
-            </section>
-            <section>
-              <h3
-                style={{
-                  fontSize: 16,
-                  fontWeight: 600,
-                  marginBottom: 8
-                }}
-              >
-                {t.recsTitle}
-              </h3>
-              <ul
-                style={{
-                  paddingLeft: 18,
-                  fontSize: 14,
-                  lineHeight: 1.6
-                }}
-              >
-                {recs.map((r, idx) => (
-                  <li key={idx}>{r}</li>
-                ))}
-              </ul>
-            </section>
-            <section>
-              <h3
-                style={{
-                  fontSize: 16,
-                  fontWeight: 600,
-                  marginBottom: 8
-                }}
-              >
-                {t.recsTitle}
-              </h3>
-              <ul
-                style={{
-                  paddingLeft: 18,
-                  fontSize: 14,
-                  lineHeight: 1.6
-                }}
-              >
-                {recs.map((r, idx) => (
-                  <li key={idx}>{r}</li>
-                ))}
-              </ul>
-            </section>
-            <div className={auditStyles.imatchCta}>
-          <p className={auditStyles.imatchCtaIntro}>
-            Queres aprofundar este diagnóstico?
-          </p>
-          <a
-            href="https://imatch.pt"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={auditStyles.imatchLink}
-          >
-            Conhecer a imatch · innovation collective
-          </a>
-        </div>
-        <footer className={auditStyles.footer}>
-          {t.footer}
-        </footer>
+ {/* RESULTADOS */}
+{showResults && scoring && (
+  <main>
+    <div className={auditStyles.printHeader}>
+      <div className={auditStyles.printBrand}>
+        <strong>Amplifying Innovation Audit powered by imatch</strong>
       </div>
-          </main>
-        )}
-       
-        <footer className={auditStyles.footer}>
-          {t.footer}
-        </footer>
+      <div className={auditStyles.printMeta}>
+        {company ? `Empresa: ${company}` : ""}
+        {company && role ? " · " : ""}
+        {role ? `Função: ${role}` : ""}
       </div>
     </div>
-  );
-}
-          </main>
-        )}
 
-        <footer className={auditStyles.footer}>
-          {t.footer}
-        </footer>
+    <section style={{ marginBottom: 24 }}>
+      <p
+        className={auditStyles.muted}
+        style={{
+          fontSize: 13,
+          lineHeight: 1.6,
+          maxWidth: 760,
+          marginBottom: 16
+        }}
+      >
+        {t.resultsIntro}
+      </p>
+
+      <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 4 }}>
+        {t.resultsTitle}: {amplifiedScore} / 10
+      </h2>
+
+      <p style={{ fontSize: 14, color: "#555" }}>{t.resultsP}</p>
+    </section>
+
+    <section style={{ marginBottom: 18 }}>
+      <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 8 }}>
+        {t.insightsTitle}
+      </h3>
+      <ul
+        style={{
+          paddingLeft: 18,
+          margin: 0,
+          lineHeight: 1.7,
+          fontSize: 13,
+          color: "#555"
+        }}
+      >
+        <li>
+          <strong>{t.leverageDimsLabel}:</strong>{" "}
+          {topDims.map((d: any) => dimLabel(String(d.dim), lang)).join(", ")}
+        </li>
+        <li>
+          <strong>{t.topLevelLabel}:</strong> {topLevel?.nivel ?? "—"}
+        </li>
+        <li>
+          <strong>{t.riskLabel}:</strong>{" "}
+          {riskDim ? dimLabel(String(riskDim.dim), lang) : "—"} ·{" "}
+          {riskLevel?.nivel ?? "—"}
+        </li>
+      </ul>
+    </section>
+
+    <section style={{ width: "100%", height: 320, marginBottom: 24 }}>
+      <ResponsiveContainer>
+        <RadarChart data={radarData}>
+          <PolarGrid />
+          <PolarAngleAxis dataKey="nivel" />
+          <PolarRadiusAxis angle={30} domain={[0, 100]} />
+          <Radar
+            name={t.resultsTitle}
+            dataKey="score"
+            stroke="#111111"
+            fill="#111111"
+            fillOpacity={0.4}
+          />
+        </RadarChart>
+      </ResponsiveContainer>
+    </section>
+
+    <section style={{ marginBottom: 24 }}>
+      <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 6 }}>
+        {t.dimBarTitle}
+      </h3>
+      <p
+        className={auditStyles.muted}
+        style={{ fontSize: 13, lineHeight: 1.6, maxWidth: 760, marginBottom: 12 }}
+      >
+        {t.dimBarIntro}
+      </p>
+
+      <div style={{ width: "100%", height: 260 }}>
+        <ResponsiveContainer>
+          <BarChart data={dimensionBarData} barCategoryGap={"55%"}>
+            <CartesianGrid stroke="#e8e8e8" strokeDasharray="3 3" />
+            <XAxis
+              dataKey="dim"
+              tickFormatter={(d) => dimLabel(d, lang)}
+              tick={{ fontSize: 12, fill: "#666" }}
+            />
+            <YAxis domain={[0, 100]} tick={{ fontSize: 12, fill: "#666" }} />
+            <Tooltip
+              formatter={(v: any) => [`${Math.round(v)}%`, "Score"]}
+              labelFormatter={(l: any) => dimLabel(String(l), lang)}
+            />
+            <Bar
+              dataKey="score"
+              barSize={22}
+              fill="#111"
+              fillOpacity={0.28}
+              radius={[8, 8, 0, 0]}
+            />
+          </BarChart>
+        </ResponsiveContainer>
       </div>
+
+      <button onClick={() => window.print()} className={auditStyles.btnSecondary}>
+        Guardar PDF
+      </button>
+    </section>
+
+    <section>
+      <h3 style={{ fontSize: 16, fontWeight: 600, marginBottom: 8 }}>
+        {t.recsTitle}
+      </h3>
+      <ul style={{ paddingLeft: 18, fontSize: 14, lineHeight: 1.6 }}>
+        {recs.map((r, idx) => (
+          <li key={idx}>{r}</li>
+        ))}
+      </ul>
+    </section>
+
+    <div className={auditStyles.imatchCta}>
+      <p className={auditStyles.imatchCtaIntro}>
+        Queres aprofundar este diagnóstico?
+      </p>
+      <a
+        href="https://imatch.pt"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={auditStyles.imatchLink}
+      >
+        Conhecer a imatch · innovation collective
+      </a>
     </div>
+  </main>
+)}
+<footer className={auditStyles.footer}>
+  {t.footer}
+</footer>
+      </div >
+    </div >
   );
 }
