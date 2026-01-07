@@ -24,7 +24,7 @@
     /* importante */
 }
 
-..page::after {
+.page::after {
     content: "";
     position: absolute;
     top: -140px;
@@ -37,7 +37,7 @@
     background-repeat: no-repeat;
     background-size: contain;
 
-    opacity: 0.05;
+    opacity: 0.25;
     pointer-events: none;
     z-index: 0;
 }
