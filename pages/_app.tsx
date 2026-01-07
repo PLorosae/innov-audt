@@ -480,6 +480,8 @@ export default function HomePage() {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [lang, setLang] = useState<"en" | "pt">("en");
   const t = I18N[lang];
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [marketingOptIn, setMarketingOptIn] = useState(false);
 
   const flatQuestions = useMemo(() => {
     const list: {
@@ -634,7 +636,11 @@ export default function HomePage() {
           company,
           role,
           answers,
-          scoring
+          scoring,
+          privacyAccepted,
+          privacyAcceptedAt: new Date().toISOString(),
+          marketingOptIn,
+          marketingOptInAt: marketingOptIn ? new Date().toISOString() : null
         })
       });
       if (!res.ok) {
@@ -647,6 +653,30 @@ export default function HomePage() {
       setSubmitting(false);
     }
   }
+  <label style={{ display: "flex", gap: 10, alignItems: "flex-start", fontSize: 13, color: "#444" }}>
+    <input
+      type="checkbox"
+      checked={privacyAccepted}
+      onChange={(e) => setPrivacyAccepted(e.target.checked)}
+      required
+      style={{ marginTop: 3 }}
+    />
+    <span>
+      Li e aceito a{" "}
+      <a
+        href="https://imatchcc-my.sharepoint.com/personal/pr_imatch_pt/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fpr%5Fimatch%5Fpt%2FDocuments%2FPrivacy%20Policy%2Epdf&parent=%2Fpersonal%2Fpr%5Fimatch%5Fpt%2FDocuments&ga=1"
+        target="_blank"
+        rel="noreferrer"
+        style={{ textDecoration: "underline" }}
+      >
+        Política de Privacidade
+      </a>
+      .
+    </span>
+  </label>
+
+
+
 
   const scoring = showResults ? computeScores() : null;
   const radarData = scoring?.radarData || [];
@@ -898,6 +928,55 @@ export default function HomePage() {
                   fontSize: 14
                 }}
               />
+              {/* PRIVACY – obrigatório */}
+              <label className={auditStyles.privacy}>
+                <input
+                  type="checkbox"
+                  checked={privacyAccepted}
+                  onChange={(e) => setPrivacyAccepted(e.target.checked)}
+                  required
+                />
+                <span>
+                  {lang === "pt" ? (
+                    <>
+                      Li e aceito a{" "}
+                      <a
+                        href="https://imatchcc-my.sharepoint.com/personal/pr_imatch_pt/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fpr%5Fimatch%5Fpt%2FDocuments%2FPrivacy%20Policy%2Epdf"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Política de Privacidade
+                      </a>{" "}
+                      da imatch.
+                    </>
+                  ) : (
+                    <>
+                      I have read and accept imatch’s{" "}
+                      <a
+                        href="https://imatchcc-my.sharepoint.com/personal/pr_imatch_pt/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fpr%5Fimatch%5Fpt%2FDocuments%2FPrivacy%20Policy%2Epdf"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Privacy Policy
+                      </a>.
+                    </>
+                  )}
+                </span>
+              </label>
+
+              {/* MARKETING – opcional */}
+              <label className={auditStyles.privacySecondary}>
+                <input
+                  type="checkbox"
+                  checked={marketingOptIn}
+                  onChange={(e) => setMarketingOptIn(e.target.checked)}
+                />
+                <span>
+                  {lang === "pt"
+                    ? "Quero receber informações sobre atividades e iniciativas desenvolvidas pela imatch."
+                    : "I would like to receive information about activities and initiatives developed by imatch."}
+                </span>
+              </label>
               {submitError && (
                 <p style={{ color: "red", fontSize: 13 }}>{submitError}</p>
               )}
@@ -911,7 +990,7 @@ export default function HomePage() {
                 </button>
                 <button
                   type="submit"
-                  disabled={submitting}
+                  disabled={submitting || !privacyAccepted}
                   className={`${auditStyles.btnPrimary} ${auditStyles.btnPrimaryAccent}`}
                 >
                   {submitting ? t.saving : t.seeResults}
@@ -924,6 +1003,14 @@ export default function HomePage() {
         {/* RESULTADOS */}
         {showResults && scoring && (
           <main>
+            <div className={auditStyles.printHeader}>
+              <div className={auditStyles.printBrand}>
+                <strong>Amplifying Innovation Audit powered by imatch</strong>
+              </div>
+              <div className={auditStyles.printMeta}>
+                {company ? `Empresa: ${company}` : ""}{company && role ? " · " : ""}{role ? `Função: ${role}` : ""}
+              </div>
+            </div>
             <section style={{ marginBottom: 24 }}>
               {/* TEXTO DE ENQUADRAMENTO */}
               <p
@@ -1023,6 +1110,12 @@ export default function HomePage() {
                   </BarChart>
                 </ResponsiveContainer>
               </div>
+              <button
+                onClick={() => window.print()}
+                className={`${auditStyles.btnSecondary}`}
+              >
+                Guardar PDF
+              </button>
             </section>
             <section>
               <h3
@@ -1048,7 +1141,16 @@ export default function HomePage() {
             </section>
           </main>
         )}
-
+        <div style={{ marginTop: 32, textAlign: "center" }}>
+          <a
+            href="https://imatch.pt"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={auditStyles.imatchLink}
+          >
+            Conhecer a imatch · innovation collective
+          </a>
+        </div>
         <footer className={auditStyles.footer}>
           {t.footer}
         </footer>

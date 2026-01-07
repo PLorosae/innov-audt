@@ -69,9 +69,17 @@
 }
 
 .btnPrimary:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-}
+    background: #f2f2f2;
+    color: #999;
+    border-color: #e0e0e0;
+    opacity: 1;
+    cursor: not-allowed;
+  }
+
+  .btnPrimaryAccent:disabled {
+    background: #f2f2f2;
+    color: #999;
+  }
 
 .btnPrimaryAccent {
   background: var(--accent);
@@ -167,4 +175,62 @@
   
   .langBtnActive {
     background: rgba(0,0,0,.08);
+  }
+  @media print {
+    :global(body) {
+      background: #fff;
+    }
+  
+    /* esconder tudo o que não interessa */
+    :global(button),
+    :global(input),
+    :global(footer) {
+      display: none !important;
+    }
+  
+    /* garantir que os gráficos aparecem bem */
+    :global(svg) {
+      break-inside: avoid;
+    }
+  
+    /* layout clean */
+    :global(main) {
+      padding: 0;
+      max-width: 100%;
+    }
+  }
+  .printHeader {
+    display: none;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .printBrand {
+    font-size: 14px;
+    letter-spacing: 0.2px;
+  }
+  
+  .printMeta {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #666;
+  }
+  
+  @media print {
+    .printHeader {
+      display: block;
+    }
+  }
+  .imatchLink {
+    font-size: 13px;
+    color: #666;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  
+  .imatchLink:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
   }

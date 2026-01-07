@@ -19,8 +19,24 @@ export default async function handler(
   }
 
   try {
-    const { email, company, role, answers, scoring } = req.body;
-
+    const {
+      email,
+      company,
+      role,
+      answers,
+      scoring,
+      privacyAccepted,
+      privacyAcceptedAt,
+      marketingOptIn,
+      marketingOptInAt
+    } = req.body;
+    console.log("CONSENT CHECK", {
+      privacyAccepted: req.body.privacyAccepted,
+      marketingOptIn: req.body.marketingOptIn
+    });
+    if (!privacyAccepted) {
+      return res.status(400).json({ error: "Privacy policy not accepted" });
+    }
     const createdAt = new Date().toISOString();
 
     const fields: Record<string, any> = {
@@ -28,20 +44,42 @@ export default async function handler(
       Empresa: company,
       Função: role,
       DataHora: createdAt,
+    
+      // Scores
       ScoreGlobal: scoring?.amplifiedScore ?? null,
       Score_Indivíduo: scoring?.levelScoresRaw?.["Indivíduo"] ?? null,
       Score_Equipa: scoring?.levelScoresRaw?.["Equipa"] ?? null,
       Score_Organização: scoring?.levelScoresRaw?.["Organização"] ?? null,
       Score_Ecossistema: scoring?.levelScoresRaw?.["Ecossistema"] ?? null,
       Score_O_Todo: scoring?.levelScoresRaw?.["O Todo"] ?? null,
+    
+      // Dados detalhados
       RespostasJSON: JSON.stringify(answers),
-      RadarJSON: JSON.stringify(scoring?.radarData || [])
+      RadarJSON: JSON.stringify(scoring?.radarData || []),
+    
+      // ✅ Compliance & consentimentos
+      PrivacyAccepted: privacyAccepted === true,
+      PrivacyAcceptedAt: privacyAccepted ? createdAt : null,
+    
+      MarketingOptIn: marketingOptIn === true,
+      MarketingOptInAt: marketingOptIn ? createdAt : null
     };
 
     const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(
       AIRTABLE_TABLE_NAME
     )}`;
 
+    console.log("CONSENT DEBUG", {
+      privacyAccepted,
+      marketingOptIn,
+      privacyAcceptedAt,
+      marketingOptInAt
+    });
+    console.log("FIELDS PREVIEW", {
+      PrivacyAccepted: fields.PrivacyAccepted,
+      MarketingOptIn: fields.MarketingOptIn
+    });
+    
     const airtableRes = await fetch(url, {
       method: "POST",
       headers: {
