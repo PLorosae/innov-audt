@@ -1,71 +1,92 @@
 :root {
-  --bg: #ffffff;
-  --text: #111111;
-  --muted: #666666;
+    --bg: #ffffff;
+    --text: #111111;
+    --muted: #666666;
 
-  --accent: #ff6a3d;
-  --accent-weak: rgba(255, 106, 61, 0.24);
+    --accent: #ff6a3d;
+    --accent-weak: rgba(255, 106, 61, 0.24);
 
-  --border: #e9e9e9;
-  --card: #ffffff;
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-  --radius: 18px;
+    --border: #e9e9e9;
+    --card: #ffffff;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    --radius: 18px;
 }
 
 .page {
-  min-height: 100vh;
-  background:
-    radial-gradient(900px 450px at 20% 0%, var(--accent-weak), transparent 60%),
-    radial-gradient(700px 380px at 85% 15%, rgba(0, 0, 0, 0.035), transparent 60%),
-    var(--bg);
-  color: var(--text);
+    position: relative;
+    min-height: 100vh;
+    background:
+        radial-gradient(900px 450px at 20% 0%, var(--accent-weak), transparent 60%),
+        radial-gradient(700px 380px at 85% 15%, rgba(0, 0, 0, 0.035), transparent 60%),
+        var(--bg);
+    color: var(--text);
+    overflow: hidden;
+    /* importante */
+}
+
+..page::after {
+    content: "";
+    position: absolute;
+    top: -140px;
+    right: -180px;
+
+    width: 560px;
+    height: 560px;
+
+    background-image: url("/amplifying-ripple-bw.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 28px 18px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 28px 18px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont;
 }
 
 .card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 18px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 18px;
 }
 
 .h1 {
-  font-size: 28px;
-  font-weight: 800;
-  margin: 0 0 8px 0;
-  letter-spacing: -0.02em;
+    font-size: 28px;
+    font-weight: 800;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.02em;
 }
 
 .p {
-  font-size: 14px;
-  line-height: 1.6;
-  margin: 0 0 10px 0;
-  color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0 0 10px 0;
+    color: var(--text);
 }
 
 .muted {
-  color: var(--muted);
+    color: var(--muted);
 }
 
 .btnPrimary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 16px;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  background: var(--text);
-  color: #fff;
-  cursor: pointer;
-  font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    background: var(--text);
+    color: #fff;
+    cursor: pointer;
+    font-size: 13px;
 }
 
 .btnPrimary:disabled {
@@ -74,174 +95,191 @@
     border-color: #e0e0e0;
     opacity: 1;
     cursor: not-allowed;
-  }
+}
 
-  .btnPrimaryAccent:disabled {
+.btnPrimaryAccent:disabled {
     background: #f2f2f2;
     color: #999;
-  }
+}
 
 .btnPrimaryAccent {
-  background: var(--accent);
+    background: var(--accent);
 }
 
 .btnGhost {
-  padding: 10px 16px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: #fff;
-  color: var(--text);
-  cursor: pointer;
-  font-size: 13px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 13px;
 }
 
 .btnGhost:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
+    opacity: 0.55;
+    cursor: not-allowed;
 }
 
 .progressWrap {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
 }
 
 .progressTop {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 11px;
-  color: rgba(0, 0, 0, 0.55);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: rgba(0, 0, 0, 0.55);
 }
 
 .progressTrack {
-  width: 100%;
-  height: 8px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.08);
+    overflow: hidden;
 }
 
 .progressFill {
-  height: 100%;
-  border-radius: 999px;
-  background: var(--accent);
-  transition: width 220ms ease;
+    height: 100%;
+    border-radius: 999px;
+    background: var(--accent);
+    transition: width 220ms ease;
 }
 
 .footer {
-  margin-top: 40px;
-  padding: 12px 0;
-  text-align: center;
-  font-size: 11px;
-  color: #777;
-  border-top: 1px solid #eee;
+    margin-top: 40px;
+    padding: 12px 0;
+    text-align: center;
+    font-size: 11px;
+    color: #777;
+    border-top: 1px solid #eee;
 }
 
 @media (max-width: 600px) {
-  .container {
-    padding: 22px 14px;
-  }
-  .progressTop {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-  }
+    .container {
+        padding: 22px 14px;
+    }
+
+    .progressTop {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
 }
+
 .langBar {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 12px;
-  }
-  
-  .langToggle {
+}
+
+.langToggle {
     display: inline-flex;
     gap: 6px;
     padding: 4px;
     border-radius: 999px;
-    border: 1px solid rgba(0,0,0,.08);
-    background: rgba(255,255,255,.7);
-  }
-  
-  .langBtn {
+    border: 1px solid rgba(0, 0, 0, .08);
+    background: rgba(255, 255, 255, .7);
+}
+
+.langBtn {
     padding: 6px 10px;
     border-radius: 999px;
     border: 0;
     background: transparent;
     cursor: pointer;
     font-size: 12px;
-  }
-  
-  .langBtnActive {
-    background: rgba(0,0,0,.08);
-  }
-  @media print {
+}
+
+.langBtnActive {
+    background: rgba(0, 0, 0, .08);
+}
+
+@media print {
     :global(body) {
-      background: #fff;
+        background: #fff;
     }
-  
+
     /* esconder tudo o que não interessa */
     :global(button),
     :global(input),
     :global(footer) {
-      display: none !important;
+        display: none !important;
     }
-  
+
     /* garantir que os gráficos aparecem bem */
     :global(svg) {
-      break-inside: avoid;
+        break-inside: avoid;
     }
-  
+
     /* layout clean */
     :global(main) {
-      padding: 0;
-      max-width: 100%;
+        padding: 0;
+        max-width: 100%;
     }
-  }
-  .printHeader {
+}
+
+.printHeader {
     display: none;
     margin-bottom: 16px;
     padding-bottom: 12px;
     border-bottom: 1px solid #eee;
-  }
-  
-  .printBrand {
+}
+
+.printBrand {
     font-size: 14px;
     letter-spacing: 0.2px;
-  }
-  
-  .printMeta {
+}
+
+.printMeta {
     margin-top: 4px;
     font-size: 12px;
     color: #666;
-  }
-  
- /* CTA (normal + print) */
+}
+
+/* CTA (normal + print) */
 .imatchCta {
     margin-top: 56px;
     padding: 24px;
     text-align: center;
     background: rgba(0, 0, 0, 0.03);
     border-radius: 12px;
-  }
-  
-  .imatchCtaIntro {
+}
+
+.imatchCtaIntro {
     font-size: 13px;
     color: #777;
     margin-bottom: 6px;
-  }
-  
-  .imatchLink {
+}
+
+.imatchLink {
     font-size: 14px;
     font-weight: 500;
     color: var(--accent);
     text-decoration: none;
-  }
-  
-  /* PRINT */
-  @media print {
+}
+
+/* PRINT */
+@media print {
     .printHeader {
-      display: block;
+        display: block;
+    }
+}
+.main {
+    position: relative;
+    z-index: 1;
+  }
+  @media (max-width: 600px) {
+    .page::after {
+      top: -120px;
+      right: -260px;
+      width: 460px;
+      height: 460px;
+      opacity: 0.035;
     }
   }
