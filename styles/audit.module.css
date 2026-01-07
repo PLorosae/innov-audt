@@ -16,31 +16,42 @@
     position: relative;
     min-height: 100vh;
     background:
-        radial-gradient(900px 450px at 20% 0%, var(--accent-weak), transparent 60%),
-        radial-gradient(700px 380px at 85% 15%, rgba(0, 0, 0, 0.035), transparent 60%),
-        var(--bg);
+      radial-gradient(900px 450px at 20% 0%, var(--accent-weak), transparent 60%),
+      radial-gradient(700px 380px at 85% 15%, rgba(0, 0, 0, 0.035), transparent 60%),
+      var(--bg);
     color: var(--text);
     overflow: hidden;
-    /* importante */
-}
-
-.page::after {
+  }
+  
+  /* ASSET IMATCH — canto inferior direito */
+  .page::after {
     content: "";
     position: absolute;
-    bottom: -180px;
-    right: -180px;
-
-    width: 560px;
-    height: 560px;
-
-    background-image: url("/amplifying-ripple-bw.png");
-    background-repeat: no-repeat;
+    bottom: -220px;
+    right: -220px;
+  
+    width: 720px;
+    height: 720px;
+  
+    background: url("/amplifying-ripple-bw.png") no-repeat;
     background-size: contain;
-
-    opacity: 0.25;
+  
+    opacity: 0.06;
     pointer-events: none;
     z-index: 0;
-}
+  
+    /* fade elegante (mais visível no canto inferior direito, desaparece para dentro) */
+    -webkit-mask-image: radial-gradient(
+      circle at 100% 100%,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,0) 70%
+    );
+    mask-image: radial-gradient(
+      circle at 100% 100%,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,0) 70%
+    );
+  }
 
 .container {
     max-width: 900px;
