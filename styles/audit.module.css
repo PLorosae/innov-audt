@@ -16,26 +16,15 @@
     position: relative;
     min-height: 100vh;
     background:
-      /* glow principal topo esquerdo */
-      radial-gradient(
-        900px 450px at 18% 0%,
-        rgba(255, 106, 61, 0.30),
-        transparent 62%
+      /* véu quente global */
+      linear-gradient(
+        180deg,
+        rgba(255, 106, 61, 0.10) 0%,
+        rgba(255, 255, 255, 0.0) 55%
       ),
   
-      /* glow quente topo direito (substitui a mancha feia) */
-      radial-gradient(
-        820px 420px at 92% 6%,
-        rgba(255, 106, 61, 0.22),
-        transparent 65%
-      ),
-  
-      /* glow de equilíbrio em baixo à esquerda */
-      radial-gradient(
-        900px 520px at 0% 100%,
-        rgba(255, 106, 61, 0.10),
-        transparent 60%
-      ),
+      radial-gradient(900px 450px at 20% 0%, rgba(255,106,61,0.22), transparent 60%),
+      radial-gradient(700px 380px at 85% 15%, rgba(255,106,61,0.14), transparent 60%),
   
       var(--bg);
   
