@@ -63,7 +63,7 @@
     background: url("/amplifying-ripple-bw.png") no-repeat;
     background-size: contain;
   
-    opacity: 0.06;
+    opacity: 0.35;
     pointer-events: none;
     z-index: 0;
   
