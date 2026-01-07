@@ -221,16 +221,23 @@
     .printHeader {
       display: block;
     }
-  }
-  .imatchLink {
-    font-size: 13px;
-    color: #666;
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: color 0.2s ease, border-color 0.2s ease;
-  }
-  
-  .imatchLink:hover {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-  }
+    .imatchCta {
+        margin-top: 56px;
+        padding: 24px;
+        text-align: center;
+        background: rgba(0,0,0,0.03);
+        border-radius: 12px;
+      }
+      
+      .imatchCtaIntro {
+        font-size: 13px;
+        color: #777;
+        margin-bottom: 6px;
+      }
+      
+      .imatchLink {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--accent);
+        text-decoration: none;
+      }

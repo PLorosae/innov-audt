@@ -1141,7 +1141,10 @@ export default function HomePage() {
             </section>
           </main>
         )}
-        <div style={{ marginTop: 32, textAlign: "center" }}>
+        <div className={auditStyles.imatchCta}>
+          <p className={auditStyles.imatchCtaIntro}>
+            Queres aprofundar este diagnóstico?
+          </p>
           <a
             href="https://imatch.pt"
             target="_blank"
