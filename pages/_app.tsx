@@ -1139,6 +1139,28 @@ export default function HomePage() {
                 ))}
               </ul>
             </section>
+            <section>
+              <h3
+                style={{
+                  fontSize: 16,
+                  fontWeight: 600,
+                  marginBottom: 8
+                }}
+              >
+                {t.recsTitle}
+              </h3>
+              <ul
+                style={{
+                  paddingLeft: 18,
+                  fontSize: 14,
+                  lineHeight: 1.6
+                }}
+              >
+                {recs.map((r, idx) => (
+                  <li key={idx}>{r}</li>
+                ))}
+              </ul>
+            </section>
           </main>
         )}
         <div className={auditStyles.imatchCta}>
@@ -1154,6 +1176,16 @@ export default function HomePage() {
             Conhecer a imatch · innovation collective
           </a>
         </div>
+        <footer className={auditStyles.footer}>
+          {t.footer}
+        </footer>
+      </div>
+    </div>
+  );
+}
+          </main>
+        )}
+
         <footer className={auditStyles.footer}>
           {t.footer}
         </footer>
