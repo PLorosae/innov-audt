@@ -82,7 +82,7 @@
     background: url("/img-home-banner2.png") no-repeat;
     background-size: contain;
   
-    opacity: 0.12;
+    opacity: 0.4;
     pointer-events: none;
     z-index: 0;
   
@@ -90,12 +90,12 @@
     -webkit-mask-image: radial-gradient(
       circle at 0% 100%,
       rgba(0, 0, 0, 1) 0%,
-      rgba(0, 0, 0, 0) 70%
+      rgba(0, 0, 0, 0) 100%
     );
     mask-image: radial-gradient(
       circle at 0% 100%,
       rgba(0, 0, 0, 1) 0%,
-      rgba(0, 0, 0, 0) 70%
+      rgba(0, 0, 0, 0) 100%
     );
   }
 
