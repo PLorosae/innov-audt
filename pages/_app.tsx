@@ -1161,9 +1161,7 @@ export default function HomePage() {
                 ))}
               </ul>
             </section>
-          </main>
-        )}
-        <div className={auditStyles.imatchCta}>
+            <div className={auditStyles.imatchCta}>
           <p className={auditStyles.imatchCtaIntro}>
             Queres aprofundar este diagnóstico?
           </p>
@@ -1176,6 +1174,13 @@ export default function HomePage() {
             Conhecer a imatch · innovation collective
           </a>
         </div>
+        <footer className={auditStyles.footer}>
+          {t.footer}
+        </footer>
+      </div>
+          </main>
+        )}
+       
         <footer className={auditStyles.footer}>
           {t.footer}
         </footer>
