@@ -22,24 +22,7 @@
     color: var(--text);
     overflow: hidden;
   }
-  .pageIntro::before {
-    content: "";
-    position: absolute;
-    bottom: -120px;
-    left: -160px;
-  
-    width: 1000px;
-    height: 1000px;
-  
-    background: url("/img-home-banner2.png") no-repeat;
-    background-size: contain;
-  
-    opacity: 0.08;
-    pointer-events: none;
-    z-index: 0;
-  
 
-  }
 /* ASSET IMATCH — canto inferior direito */
 .page::after {
     content: "";
