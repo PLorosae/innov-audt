@@ -1136,7 +1136,7 @@ export default function HomePage() {
         Queres aprofundar este diagnóstico?
       </p>
       <a
-        href="https://imatch.pt"
+        href="https://www.imatch.pt"
         target="_blank"
         rel="noopener noreferrer"
         className={auditStyles.imatchLink}
