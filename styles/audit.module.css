@@ -38,17 +38,7 @@
     pointer-events: none;
     z-index: 0;
   
-    /* fade progressivo: visível no canto → desaparece */
-    -webkit-mask-image: radial-gradient(
-      circle at 0% 100%,
-      rgba(0,0,0,1) 0%,
-      rgba(0,0,0,0) 70%
-    );
-    mask-image: radial-gradient(
-      circle at 0% 100%,
-      rgba(0,0,0,1) 0%,
-      rgba(0,0,0,0) 70%
-    );
+
   }
 /* ASSET IMATCH — canto inferior direito */
 .page::after {
