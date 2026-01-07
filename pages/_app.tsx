@@ -706,7 +706,7 @@ export default function HomePage() {
       ? Math.round((questionNumber / totalQuestions) * 100)
       : 0;
   return (
-    <div className={auditStyles.page}>
+    <div className={`${auditStyles.page} ${auditStyles.pageIntro}`}>
       <div className={auditStyles.container}>
         <div className={auditStyles.langBar}>
           <div className={auditStyles.langToggle}>

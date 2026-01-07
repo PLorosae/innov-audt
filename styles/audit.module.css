@@ -22,9 +22,36 @@
     color: var(--text);
     overflow: hidden;
   }
+  .pageIntro::before {
+    content: "";
+    position: absolute;
+    bottom: -120px;
+    left: -160px;
   
-  /* ASSET IMATCH — canto inferior direito */
-  .page::after {
+    width: 680px;
+    height: 680px;
+  
+    background: url("/img-home-banner2.png") no-repeat;
+    background-size: contain;
+  
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+  
+    /* fade progressivo: visível no canto → desaparece */
+    -webkit-mask-image: radial-gradient(
+      circle at 0% 100%,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,0) 70%
+    );
+    mask-image: radial-gradient(
+      circle at 0% 100%,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,0) 70%
+    );
+  }
+/* ASSET IMATCH — canto inferior direito */
+.page::after {
     content: "";
     position: absolute;
     bottom: -220px;
@@ -50,6 +77,35 @@
       circle at 100% 100%,
       rgba(0,0,0,1) 0%,
       rgba(0,0,0,0) 70%
+    );
+  }
+  /* Intro-only home banner asset */
+.pageIntro::before {
+    content: "";
+    position: absolute;
+    bottom: -120px;
+    left: -160px;
+  
+    width: 720px;
+    height: 720px;
+  
+    background: url("/img-home-banner2.png") no-repeat;
+    background-size: contain;
+  
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+  
+    /* fade elegante: visível no canto → desaparece para dentro */
+    -webkit-mask-image: radial-gradient(
+      circle at 0% 100%,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0) 70%
+    );
+    mask-image: radial-gradient(
+      circle at 0% 100%,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0) 70%
     );
   }
 
