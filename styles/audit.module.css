@@ -17,7 +17,7 @@
     min-height: 100vh;
     background:
       radial-gradient(900px 450px at 20% 0%, var(--accent-weak), transparent 60%),
-      radial-gradient(700px 380px at 85% 15%, rgba(0, 0, 0, 0.20), transparent 60%),
+      radial-gradient(700px 380px at 85% 15%, rgba(0, 0, 0, 0.30), transparent 60%),
       var(--bg);
     color: var(--text);
     overflow: hidden;
