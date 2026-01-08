@@ -62,7 +62,7 @@
     pointer-events: none;
     z-index: 0;
   
-    animation: rippleIn 1.6s ease-out both;
+    animation: rippleIn 2.6s ease-out both;
   
     -webkit-mask-image: radial-gradient(
       circle at 100% 100%,
@@ -78,7 +78,7 @@
   
   @keyframes rippleIn {
     0% {
-      transform: scale(1.08);
+      transform: scale(1.09);
       opacity: 0;
     }
     60% {
