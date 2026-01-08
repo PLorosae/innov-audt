@@ -62,7 +62,8 @@
     pointer-events: none;
     z-index: 0;
   
-    /* fade elegante (mais visível no canto inferior direito, desaparece para dentro) */
+    animation: rippleIn 1.6s ease-out both;
+  
     -webkit-mask-image: radial-gradient(
       circle at 100% 100%,
       rgba(0,0,0,1) 0%,
@@ -73,6 +74,20 @@
       rgba(0,0,0,1) 0%,
       rgba(0,0,0,0) 100%
     );
+  }
+  
+  @keyframes rippleIn {
+    0% {
+      transform: scale(1.08);
+      opacity: 0;
+    }
+    60% {
+      opacity: 0.38; /* ligeiro overshoot, quase imperceptível */
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0.35;
+    }
   }
   
 
