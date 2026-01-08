@@ -62,7 +62,10 @@
     z-index: 0;
   
     transform-origin: 100% 100%;
-    animation: rippleIn 2.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  
+    animation:
+      rippleIn 2.6s cubic-bezier(0.22, 1, 0.36, 1) both,
+      ripplePulse 14s ease-in-out 2.6s infinite;
   
     -webkit-mask-image: radial-gradient(
       circle at 100% 100%,
@@ -79,6 +82,12 @@
   @keyframes rippleIn {
     0%   { transform: scale(0.92); opacity: 0; }
     70%  { opacity: 0.22; }
+    100% { transform: scale(1.06); opacity: 0.35; }
+  }
+  
+  @keyframes ripplePulse {
+    0%   { transform: scale(1.06); opacity: 0.35; }
+    50%  { transform: scale(1.085); opacity: 0.40; }
     100% { transform: scale(1.06); opacity: 0.35; }
   }
   
